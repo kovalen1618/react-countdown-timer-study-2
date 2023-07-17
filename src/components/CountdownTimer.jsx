@@ -1,3 +1,10 @@
+
+// Styles
+import './CountdownTimer.css'
+// Supports weights 200-700
+import '@fontsource-variable/oswald';
+
+
 function CountdownTimer() {
   return (
     <div className="countdown-timer"> 
