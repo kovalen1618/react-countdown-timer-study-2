@@ -1,6 +1,9 @@
 // React Hooks
 import { useEffect, useState } from 'react';
 
+// Utils
+import { getRemainingTimeUntilMsTimestamp } from './utils/CountdownTimerUtils';
+
 // Styles
 import './CountdownTimer.css'
 // Supports weights 200-700
@@ -14,7 +17,8 @@ const defaultRemainingTime = {
     days: '00'
 }
 
-function CountdownTimer() {
+// Takes in the prop that holds the timestamp in ms when the countdown is over
+function CountdownTimer({ countdownTimestampMs }) {
     const [remainingTime, setRemainingTime] = useState(defaultRemainingTime);
 
     useEffect(() => {
@@ -22,16 +26,16 @@ function CountdownTimer() {
         // When useEffect is called, setInterval runs its contents every second
         // In order to stop it, first must store the return value into intervalId
         const intervalId = setInterval(() => {
-            updateRemainingTime();
+            updateRemainingTime(countdownTimestampMs);
         }, 1000);
         // Then, unmount the component with clearInterval to stop the interval from running
         return () => clearInterval(intervalId);
-    }, []);
+        // Needs to be added as a dependency since it is a prop and so when its value changes the useEffect will trigger
+    }, [countdownTimestampMs]);
 
     // Update remainingTime state
-    function updateRemainingTime() {
-        // Testing if function works
-        console.log("Hello World");
+    function updateRemainingTime(countdown) {
+        setRemainingTime(getRemainingTimeUntilMsTimestamp(countdown)); 
     }
 
     return (
