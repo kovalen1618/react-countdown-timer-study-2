@@ -1,9 +1,10 @@
-import './App.css'
-import CountdownTimer from './components/CountdownTimer'
+import './App.css';
+import CountdownTimer from './components/countdowntimer/CountdownTimer.jsx';
 
 function App() {
   return (
-    <CountdownTimer />
+    // Hardcoded timestamp prop
+    <CountdownTimer countdownTimestampMs={1643673600000} />
   )
 }
 
