@@ -3,8 +3,8 @@ import CountdownTimer from './components/countdowntimer/CountdownTimer.jsx';
 
 function App() {
   return (
-    // Hardcoded timestamp prop
-    <CountdownTimer countdownTimestampMs={1643673600000} />
+    // Hardcoded timestamp prop for 12/25/2023 at 00:00:00
+    <CountdownTimer countdownTimestampMs={1703484000000} />
   )
 }
 
